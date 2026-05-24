@@ -26,7 +26,7 @@ jobs:
           ./mvnw verify --no-transfer-progress
 
       - name: List test reports
-        run: ls -R target/failsafe-reports/
+        run: ls -R target/site/
 
       - name: Test Reporter
         uses: dorny/test-reporter@v1
@@ -41,4 +41,4 @@ jobs:
         if: always()
         with:
           name: jacoco-report
-          path: target/site/report
+          path: target/site/

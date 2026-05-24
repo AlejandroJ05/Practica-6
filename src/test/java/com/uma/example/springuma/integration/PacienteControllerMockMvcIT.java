@@ -77,7 +77,7 @@ public class PacienteControllerMockMvcIT extends AbstractIntegration {
     void savePaciente_RecuperaPacientePorId() throws Exception {
         crearMedico(medico);
         crearPaciente(paciente);
-        mockMvc.perform(get("/paciente/" + paciente.getId()))
+        mockMvc.perform(get("/paciente/{id}"))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(content().contentType("application/json"))
                 .andExpect(jsonPath("$.nombre").value("Maria"))
@@ -86,7 +86,7 @@ public class PacienteControllerMockMvcIT extends AbstractIntegration {
 
         paciente.setCita("Oncologia");
 
-        mockMvc.perform(put("/paciente/")
+        mockMvc.perform(put("/paciente")
                 .contentType("application/json")
                 .content(objectMapper.writeValueAsString(paciente)))
                 .andExpect(status().is2xxSuccessful());

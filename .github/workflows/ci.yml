@@ -49,6 +49,8 @@ jobs:
         with:
           generate-branches-badge: true
           jacoco-csv-file: 'target/site/jacoco/jacoco.csv'
+          coverage-badge-filename: 'jacoco.svg'
+          branches-badge-filename: 'branches.svg'
 
       - name: Log coverage percentage
         run: echo "coverage = ${{ steps.jacoco.outputs.coverage }}"

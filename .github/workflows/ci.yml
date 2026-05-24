@@ -49,8 +49,18 @@ jobs:
         with:
           generate-branches-badge: true
           jacoco-csv-file: 'target/site/jacoco/jacoco.csv'
+          push-changes: true
           coverage-badge-filename: 'jacoco.svg'
           branches-badge-filename: 'branches.svg'
 
+
       - name: Log coverage percentage
         run: echo "coverage = ${{ steps.jacoco.outputs.coverage }}"
+
+      - name: Commit and Push Badges
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add jacoco.svg branches.svg
+          # Solo hacemos commit si hay cambios reales
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Actualizados badges de cobertura" && git push)

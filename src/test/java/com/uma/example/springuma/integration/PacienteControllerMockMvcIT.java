@@ -86,7 +86,7 @@ public class PacienteControllerMockMvcIT extends AbstractIntegration {
 
         paciente.setCita("Oncologia");
 
-        mockMvc.perform(put("/paciente/"+paciente.getId())
+        mockMvc.perform(put("/paciente/")
                 .contentType("application/json")
                 .content(objectMapper.writeValueAsString(paciente)))
                 .andExpect(status().is2xxSuccessful());

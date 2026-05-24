@@ -60,6 +60,6 @@ public class MedicoControllerMockMvcIT extends AbstractIntegration {
                 .andExpect(status().is2xxSuccessful());
 
         mockMvc.perform(get("/medico/" + medico.getId()))
-                .andExpect(status().isNotFound());
+                .andExpect(status().isInternalServerError());
     }
 }

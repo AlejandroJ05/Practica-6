@@ -27,7 +27,7 @@ jobs:
         if: always()
         with:
           name: Resultados de Tests
-          path: target/suregire-reports/*.xml
+          path: target/failsafe-reports/*.xml
           reporter: java-junit
 
       - name: Upload Jacoco Report
